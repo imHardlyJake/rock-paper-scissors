@@ -2,44 +2,45 @@
 // Create Function to Randomly detirmine computers answer
 // Create variable to accept case insensitive input from human
 // Compare inputs, and display proper answer
-
+var playerSelection = "";
 function getComputerChoice() {
     let choices = ['rock', 'paper', 'scissors'];
-    return choices[Math.floor(Math.random() * choices.length)];
+     return choices[Math.floor(Math.random() * choices.length)];
 }
-const computerSelection = getComputerChoice();
+var computerSelection = getComputerChoice();
 
 var playerWins = false;
 
 function playRound(computerSelection, playerSelection) {
     if (playerSelection === computerSelection) {
-        return "It's a Tie!";
+         console.log("It's a Tie!");
     }
     else if (playerSelection === 'rock' && computerSelection === 'paper') {
         playerWins = false;
-        return "You Lose, Paper beats rock!";
-        
+         console.log("You Lose, Paper beats rock!"); 
     }
     else if (playerSelection === 'rock' && computerSelection  === 'scissors') {
          playerWins = true;
-        return "You win, Rock beats Scissors!";
+         console.log("You win, Rock beats Scissors!");
     }
     else if (playerSelection === 'paper' && computerSelection === 'rock') {
         playerWins = true;
-        return "You win, Paper beats rock";
+         console.log("You win, Paper beats rock");
     }
     else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         playerWins = false;
-        return "You lose! Scissors, beats paper";
+         console.log("You lose! Scissors, beats paper");
     }
     else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         playerWins = false;
-        return "You lose! Rock beats scissors";
+         console.log("You lose! Rock beats scissors");
     }
     else {
         playerWins = true;
-        return "You win! Scissors beats paper!";
+         console.log("You win! Scissors beats paper!");
     }
+    
+    
 }
 
 
@@ -48,7 +49,6 @@ function game() {
     let computerScore = 0;
     let playerScore = 0;
     for (let i = 0; i < 5; i++) {
-        var playerSelection = prompt('Write your choice here!').toLowerCase()
         playRound(computerSelection, playerSelection);
         if (playerWins == true) {
             playerScore++;
@@ -70,3 +70,37 @@ function game() {
     }
 }
 
+//User Interface
+function getRock() {
+    playerSelection = 'rock';
+    console.log(playerSelection);
+}
+function getPaper() {
+    playerSelection = 'paper';
+    console.log(playerSelection);
+}
+function getScissors() {
+    playerSelection = 'scissors';
+    console.log(playerSelection);
+}
+var rock = document.getElementById('rock');
+rock.addEventListener('click', ()=>{
+    getRock();
+    playRound(computerSelection, playerSelection);
+    console.log(computerSelection);
+    computerSelection = getComputerChoice();   
+})
+var paper = document.getElementById('paper');
+paper.addEventListener('click', ()=>{
+    getPaper();
+    playRound(computerSelection, playerSelection);
+    console.log(computerSelection);
+    computerSelection = getComputerChoice();
+})
+var scissors = document.getElementById('scissors');
+scissors.addEventListener('click', ()=>{
+    getScissors();
+    playRound(computerSelection, playerSelection);
+    console.log(computerSelection);
+    computerSelection = getComputerChoice();
+})
