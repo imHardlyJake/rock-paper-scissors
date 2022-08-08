@@ -9,43 +9,49 @@ function getComputerChoice() {
 }
 var computerSelection = getComputerChoice();
 
-var playerWins = false;
+var playerScore = 0;
+var computerScore = 0;
 
 function playRound(computerSelection, playerSelection) {
     if (playerSelection === computerSelection) {
-         console.log("It's a Tie!");
+        document.getElementById('outcome').innerHTML = 'Its a Tie!';
     }
     else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        playerWins = false;
-         console.log("You Lose, Paper beats rock!"); 
+        computerScore++
+        document.getElementById('cpu-score').innerHTML = computerScore;
+        document.getElementById('outcome').innerHTML = 'You lose, paper beats rock.';
     }
     else if (playerSelection === 'rock' && computerSelection  === 'scissors') {
-         playerWins = true;
-         console.log("You win, Rock beats Scissors!");
+        playerScore++
+        document.getElementById('user-score').innerHTML = playerScore;
+        document.getElementById('outcome').textContent = 'You Win! Rock beats scissors!';
     }
     else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        playerWins = true;
-         console.log("You win, Paper beats rock");
+        playerScore++;
+        document.getElementById('user-score').innerHTML = playerScore;
+        document.getElementById('outcome').innerHTML = 'You Win! Paper beats rock!';
     }
     else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        playerWins = false;
-         console.log("You lose! Scissors, beats paper");
+        computerScore++;
+        document.getElementById('cpu-score').innerHTML = computerScore;
+        document.getElementById('outcome').innerHTML = 'You Lose, scissors beats paper.'
     }
     else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        playerWins = false;
-         console.log("You lose! Rock beats scissors");
+        computerScore++;
+        document.getElementById('cpu-score').innerHTML = computerScore;
+        document.getElementById('outcome').innerHTML = 'You Lose, rock beats scissors.';
     }
     else {
-        playerWins = true;
-         console.log("You win! Scissors beats paper!");
+        playerScore++;
+        document.getElementById('user-score').innerHTML = playerScore;
+        document.getElementById('outcome').innerHTML = 'You Win! Scissors beats paper!';
     }
-    
-    
-}
+        
+    }
 
 
 // Best of 5
-function game() {
+/*function game() {
     let computerScore = 0;
     let playerScore = 0;
     for (let i = 0; i < 5; i++) {
@@ -60,34 +66,30 @@ function game() {
         console.log(computerScore, playerScore);
     }
     if (computerScore === playerScore) {
-        console.log("It's a Tie, try again!");
+        document.getElementById('result').innerHTML = 'Its a tie, try again';
     }
     else if (computerScore > playerScore) {
-        console.log("You lose. Are you even trying?");
+        document.getElementById('result').innerHTML = 'You lose, are you even trying?';
     }
     else {
-        console.log("You win! It's about time!!");
+        document.getElementById('result').innerHTML = 'You win, its about time';
     }
 }
-
+*/
 //User Interface
 function getRock() {
-    playerSelection = 'rock';
-    console.log(playerSelection);
+    playerSelection = 'rock';    
 }
 function getPaper() {
-    playerSelection = 'paper';
-    console.log(playerSelection);
+    playerSelection = 'paper';    
 }
 function getScissors() {
     playerSelection = 'scissors';
-    console.log(playerSelection);
 }
 var rock = document.getElementById('rock');
 rock.addEventListener('click', ()=>{
     getRock();
     playRound(computerSelection, playerSelection);
-    console.log(computerSelection);
     computerSelection = getComputerChoice();   
 })
 var paper = document.getElementById('paper');

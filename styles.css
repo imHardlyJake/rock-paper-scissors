@@ -1,0 +1,7 @@
+#score-container {
+    display: flex;
+    gap: 15px;
+}
+span {
+    margin-left: 15px;
+}
